@@ -1,0 +1,35 @@
+program: train.py
+entity: xnap-image-captioning
+project: image-captioning
+method: bayes
+metric:
+  name: val/clip_score
+  goal: maximize
+parameters:
+  lr:
+    distribution: log_uniform_values
+    min: 0.00001
+    max: 0.0001
+  weight_decay:
+    distribution: log_uniform_values
+    min: 0.001
+    max: 0.1
+  label_smoothing:
+    distribution: uniform
+    min: 0.0
+    max: 0.15
+  batch_size:
+    values: [32, 64, 128]
+  unfreeze_encoder_epoch:
+    values: [5, 10, 999]
+  decoder_dropout:
+    values: [0.05, 0.1, 0.15]
+  frozen_decoder_layers:
+    values: [0, 4, 8]
+  llrd_factor:
+    values: [0.85, 0.9, 1.0]
+  epochs:
+    values: [30]
+early_terminate:
+  type: hyperband
+  min_iter: 5

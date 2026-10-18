@@ -1,0 +1,25 @@
+name: xnap-example
+channels:
+- pytorch
+- defaults
+dependencies:
+- python==3.10
+- pip
+- pip:
+  - torch
+  - torchvision
+  - torchaudio
+  - onnx
+  - wandb
+  - onnxruntime
+  - ipykernel
+  - transformers
+  - pandas
+  - Pillow
+  - matplotlib
+  - nltk
+- numpy
+- tqdm
+- tensorboard
+- protobuf
+
